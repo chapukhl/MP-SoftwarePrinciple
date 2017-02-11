@@ -1,6 +1,7 @@
 package com.epam.mp.exception;
 
 public class TaskValidationException extends RuntimeException {
+
     public TaskValidationException() {
         super();
     }

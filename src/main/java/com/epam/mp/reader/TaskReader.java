@@ -1,9 +1,10 @@
 package com.epam.mp.reader;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface TaskReader {
 
-    List readTask();
+    String readTask() throws IOException;
 
 }
