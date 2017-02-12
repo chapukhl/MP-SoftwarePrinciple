@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class PreValidateConverter implements GenericConverter<String, List<String>> {
 
-    private static final String REGEX = " ";
+    private static final String REGEX = "\\s+";
 
     @Override
     public List<String> convertTask(String inputString){

@@ -1,5 +1,6 @@
 package com.epam.mp.entity;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class GenericTask<T, R> {
@@ -49,6 +50,7 @@ public class GenericTask<T, R> {
             genericTask.setFunction(function);
             return this;
         }
+
 
         public GenericTaskBuilder parameters(T parameters) {
             genericTask.setParameters(parameters);

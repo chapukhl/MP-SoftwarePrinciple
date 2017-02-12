@@ -2,8 +2,10 @@ package com.epam.mp.validator.impl;
 
 import com.epam.mp.dao.FunctionDao;
 import com.epam.mp.exception.TaskValidationException;
+import com.epam.mp.util.DaoChecker;
 import com.epam.mp.validator.GenericTaskValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import static com.epam.mp.constant.ApplicationConstants.INDEX_OF_THE_FUNCTION_NAME;
 import static com.epam.mp.constant.ApplicationConstants.MIN_PARAMETER_NUMBER;
@@ -13,10 +15,13 @@ import java.util.List;
 @Component
 public class CommonTaskValidator implements GenericTaskValidator<String> {
 
-
+    @Autowired
+    @Qualifier("mapDoubleFunctionDao")
+    private FunctionDao mapDoubleFunctionDao;
 
     @Autowired
-    private FunctionDao mapDoubleFunctionDao;
+    @Qualifier("mapBatchFunctionDao")
+    private FunctionDao mapBatchFunctionDao;
 
     @Override
     public void validateTask(List<String> params) {
@@ -33,6 +38,11 @@ public class CommonTaskValidator implements GenericTaskValidator<String> {
     }
 
     private boolean checkFunctionName(String functionName) {
-       return mapDoubleFunctionDao.getAllFunctionNames().contains(functionName.toLowerCase());
+       return checkDaoContaining(functionName);
+    }
+
+    private boolean checkDaoContaining(String functionName) {
+        return DaoChecker.checkDaoContainFunction(mapDoubleFunctionDao, functionName) ||
+                DaoChecker.checkDaoContainFunction(mapBatchFunctionDao, functionName);
     }
 }

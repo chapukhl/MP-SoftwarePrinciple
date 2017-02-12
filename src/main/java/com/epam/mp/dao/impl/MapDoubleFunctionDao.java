@@ -1,5 +1,6 @@
-package com.epam.mp.dao;
+package com.epam.mp.dao.impl;
 
+import com.epam.mp.dao.FunctionDao;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -9,10 +10,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 
 @Component
-public class MapDoubleFunctionDao implements FunctionDao<List<Double>, Double> {
+public class MapDoubleFunctionDao implements FunctionDao<Function<List<Double>, Double>> {
 
     private static Map<String, Function<List<Double>, Double>> functionMap = new HashMap<>();
 
@@ -28,14 +30,6 @@ public class MapDoubleFunctionDao implements FunctionDao<List<Double>, Double> {
 
     }
 
-    @Override
-    public Set<Function<List<Double>, Double>> getAllFunctions() {
-
-        Set<Function<List<Double>, Double>> functions = Collections.emptySet();
-        functions.addAll(functionMap.values());
-
-        return functions;
-    }
 
     @Override
     public Set<String> getAllFunctionNames() {

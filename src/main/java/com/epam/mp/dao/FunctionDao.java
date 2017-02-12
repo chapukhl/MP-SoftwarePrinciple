@@ -4,11 +4,9 @@ package com.epam.mp.dao;
 import java.util.Set;
 import java.util.function.Function;
 
-public interface FunctionDao<T, R> {
-
-    Set<Function<T, R>> getAllFunctions();
+public interface FunctionDao<T> {
 
     Set<String> getAllFunctionNames();
 
-    Function<T, R> getFunctionByName(String name);
+    T getFunctionByName(String name);
 }

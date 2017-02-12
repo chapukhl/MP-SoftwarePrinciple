@@ -5,9 +5,11 @@ import com.epam.mp.dao.FunctionDao;
 import com.epam.mp.entity.GenericTask;
 import com.epam.mp.exception.TaskConvertationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -17,7 +19,8 @@ import static com.epam.mp.constant.ApplicationConstants.INDEX_OF_THE_FUNCTION_NA
 public class PostValidateDoubleConverter implements GenericConverter<List<String>, GenericTask<Double, Double>> {
 
     @Autowired
-    private FunctionDao<Double, Double> mapDoubleFunctionDao;
+    @Qualifier("mapDoubleFunctionDao")
+    private FunctionDao<Function<Double, Double>> mapDoubleFunctionDao;
 
 
     @Override
