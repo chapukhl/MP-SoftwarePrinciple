@@ -25,7 +25,7 @@ public class PostValidateStringConverter implements
     @Override
     public GenericTask<List<String>, List<Double>> convertTask(List<String> inputObject) {
         Function<List<String>, List<Double>> function = mapBatchFunctionDao
-                .getFunctionByName(inputObject.get(INDEX_OF_THE_FUNCTION_NAME));
+                .getFunctionByName(inputObject.get(INDEX_OF_THE_FUNCTION_NAME).toLowerCase());
         inputObject.remove(INDEX_OF_THE_FUNCTION_NAME);
         return buildTask(function, inputObject);
     }

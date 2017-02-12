@@ -26,7 +26,7 @@ public class PostValidateDoubleConverter implements GenericConverter<List<String
     @Override
     public GenericTask<Double, Double> convertTask(List<String> inputObject) {
         Function<Double, Double> function = mapDoubleFunctionDao
-                .getFunctionByName(inputObject.get(INDEX_OF_THE_FUNCTION_NAME));
+                .getFunctionByName(inputObject.get(INDEX_OF_THE_FUNCTION_NAME).toLowerCase());
         inputObject.remove(INDEX_OF_THE_FUNCTION_NAME);
         List<Double> doubleParameters = convertToDoubleList(inputObject);
         return buildTask(function, doubleParameters);
