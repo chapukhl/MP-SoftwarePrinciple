@@ -8,7 +8,7 @@ public class GenericTaskOutput<T> {
         this.output = output;
     }
 
-    public String getOutput() {
-        return output.toString();
+    public T getOutput() {
+        return output;
     }
 }

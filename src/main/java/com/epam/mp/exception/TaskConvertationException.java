@@ -6,11 +6,4 @@ public class TaskConvertationException extends RuntimeException {
         super();
     }
 
-    public TaskConvertationException(String message) {
-        super(message);
-    }
-
-    public TaskConvertationException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }

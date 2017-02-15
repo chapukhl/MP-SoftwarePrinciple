@@ -21,12 +21,12 @@ public class Main {
     public static void main(String[] args) throws IOException {
         ApplicationContext ctx =
                 new AnnotationConfigApplicationContext("com.epam.mp.*");
-        GenericComputationPipeline pipeline = null;
+        GenericComputationPipeline pipeline;
         BatchComputationPipeline batchComputationPipeline = ctx.getBean(BatchComputationPipeline.class);
         CommonComputationPipeline commonComputationPipeline = ctx.getBean(CommonComputationPipeline.class);
         ctx.getBean(GreetingConsoleNotifier.class).postNotification();
         GenericConsoleReader consoleTaskReader = ctx.getBean(ConsoleTaskReader.class);
-        // GenericFileReader fileTaskReader = ctx.getBean(FileTaskReader.class);
+
 
         while (true) {
             String taskString = consoleTaskReader.readConsoleTask();
